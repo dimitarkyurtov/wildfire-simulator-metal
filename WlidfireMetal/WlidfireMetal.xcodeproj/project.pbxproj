@@ -1,0 +1,169 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXFileReference section */
+		340DF4F82DE5862900559D3A /* WildfireMetal.metallib */ = {isa = PBXFileReference; explicitFileType = "archive.metal-library"; includeInIndex = 0; path = WildfireMetal.metallib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		340DF4FA2DE5862900559D3A /* WlidfireMetal */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WlidfireMetal;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXGroup section */
+		340DF4F12DE5862900559D3A = {
+			isa = PBXGroup;
+			children = (
+				340DF4FA2DE5862900559D3A /* WlidfireMetal */,
+				340DF4F92DE5862900559D3A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		340DF4F92DE5862900559D3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				340DF4F82DE5862900559D3A /* WildfireMetal.metallib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		340DF4F72DE5862900559D3A /* WildfireMetal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 340DF4FF2DE5862900559D3A /* Build configuration list for PBXNativeTarget "WildfireMetal" */;
+			buildPhases = (
+				340DF4F62DE5862900559D3A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				340DF4FA2DE5862900559D3A /* WlidfireMetal */,
+			);
+			name = WildfireMetal;
+			packageProductDependencies = (
+			);
+			productName = WlidfireMetal;
+			productReference = 340DF4F82DE5862900559D3A /* WildfireMetal.metallib */;
+			productType = "com.apple.product-type.metal-library";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		340DF4F22DE5862900559D3A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					340DF4F72DE5862900559D3A = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 340DF4F52DE5862900559D3A /* Build configuration list for PBXProject "WlidfireMetal" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 340DF4F12DE5862900559D3A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 340DF4F92DE5862900559D3A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				340DF4F72DE5862900559D3A /* WildfireMetal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		340DF4F62DE5862900559D3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		340DF4FD2DE5862900559D3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		340DF4FE2DE5862900559D3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		340DF5002DE5862900559D3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Debug;
+		};
+		340DF5012DE5862900559D3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		340DF4F52DE5862900559D3A /* Build configuration list for PBXProject "WlidfireMetal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				340DF4FD2DE5862900559D3A /* Debug */,
+				340DF4FE2DE5862900559D3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		340DF4FF2DE5862900559D3A /* Build configuration list for PBXNativeTarget "WildfireMetal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				340DF5002DE5862900559D3A /* Debug */,
+				340DF5012DE5862900559D3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 340DF4F22DE5862900559D3A /* Project object */;
+}
