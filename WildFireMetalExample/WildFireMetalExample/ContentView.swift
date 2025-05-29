@@ -8,24 +8,8 @@
 import SwiftUI
 import MetalKit
 
-struct MetalView: NSViewRepresentable {
-    func makeCoordinator() -> MetalRenderer {
-        MetalRenderer(metalView: view)
-    }
-
-    let view = MTKView()
-
-    func makeNSView(context: Context) -> MTKView {
-        context.coordinator
-        return view
-    }
-
-    func updateNSView(_ nsView: MTKView, context: Context) {}
-}
-
 struct ContentView: View {
     var body: some View {
-        MetalView()
-            .frame(minWidth: 400, minHeight: 300)
+        WildfireView(viewModel: WildfireViewModel())
     }
 }
