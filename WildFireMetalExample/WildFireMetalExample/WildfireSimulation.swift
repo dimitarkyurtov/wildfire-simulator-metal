@@ -63,7 +63,6 @@ class WildfireSimulation {
         self.params = device.makeBuffer(length: MemoryLayout<SimulationParams>.stride, options: [])!
         self.rngStates = device.makeBuffer(length: width * height * MemoryLayout<UInt32>.stride * 6, options: [])!
 
-        // TODO: Initialize the windField and altitude matrixes.
         resetSimulation()
         setupRNG(seed: 42)
     }
@@ -78,14 +77,10 @@ class WildfireSimulation {
         encoder.setBytes(&s, length: MemoryLayout<UInt32>.stride, index: 1)
         encoder.setBytes(&w, length: MemoryLayout<UInt32>.stride, index: 2)
 
-//        let threadsPerThreadgroup = MTLSize(width: 16, height: 16, depth: 1)
-//        let threadgroups = MTLSize(width: (width + 15) / 16, height: (height + 15) / 16, depth: 1)
-        
-        let totalThreads = width * height
-        let threadsPerGrid = MTLSize(width: totalThreads, height: 1, depth: 1)
-        let threadsPerThreadgroup = MTLSize(width: min(rngSetupPipelineState.threadExecutionWidth, totalThreads), height: 1, depth: 1)
+        let threadsPerThreadgroup = MTLSize(width: 16, height: 16, depth: 1)
+        let threadgroups = MTLSize(width: (width + 15) / 16, height: (height + 15) / 16, depth: 1)
 
-        encoder.dispatchThreadgroups(threadsPerGrid, threadsPerThreadgroup: threadsPerThreadgroup)
+        encoder.dispatchThreadgroups(threadgroups, threadsPerThreadgroup: threadsPerThreadgroup)
         encoder.endEncoding()
         commandBuffer.commit()
         commandBuffer.waitUntilCompleted()
@@ -94,10 +89,26 @@ class WildfireSimulation {
     func resetSimulation() {
         let ptr = currentState.contents().bindMemory(to: UInt8.self, capacity: width * height)
         for i in 0..<(width * height) {
-//            ptr[i] = UInt8.random(in: 0...1) // Randomly Burnable or Not Burnable
-            ptr[i] = 1
+            ptr[i] = Float.random(in: 0..<1) < 0.8 ? 1 : 0
         }
         ptr[width * height/2 + width/2] = 2;
+        
+        let wind = SIMD2<Float>(x: 0.8, y: 0.2) // gentle east-northeast wind
+        let windPtr = windField.contents().bindMemory(to: SIMD2<Float>.self, capacity: width * height)
+        for i in 0..<(width * height) {
+            let variation = SIMD2<Float>(Float.random(in: -0.1...0.1), Float.random(in: -0.1...0.1))
+            windPtr[i] = normalize(wind + variation)
+        }
+        
+        let altPtr = altitude.contents().bindMemory(to: Float.self, capacity: width * height)
+        for y in 0..<height {
+            for x in 0..<width {
+                let i = y * width + x
+                let fx = Float(x) / Float(width)
+                let fy = Float(y) / Float(height)
+                altPtr[i] = sin(fx * Float.pi) * sin(fy * Float.pi) * 10.0
+            }
+        }
     }
 
     func step(iterations: Int = 60) {

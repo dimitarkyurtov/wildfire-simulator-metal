@@ -68,29 +68,18 @@ kernel void wildfireSimulation(
                 float slopeEffect = clamp(1.0 + 0.1 * slope, 0.5, 2.0);
                 float prob = params.baseProbability * windEffect * slopeEffect;
                 ignitionProb += prob;
-
-                ignitionProb = 0.1;
             }
         }
     }
 
-//    ignitionProb = clamp(ignitionProb, 0.0f, 1.0f);
-//    ignitionProb = 0.5;
-
-//    float seed = float(idx * 73856093 ^ params.iterations);
-//    float randVal = fract(sin(seed) * 43758.5453);
     metalrand::XORWOWState localState = states[idx];
     float randVal = float(metalrand::metalRand(localState)) / UINT_MAX;
     states[idx] = localState;
 
-//    float randVal = 0.4;
     willIgnite = (state == Burnable && ignitionProb > randVal);
-//    randVal = 0.6;
 
     if (state == Burning) {
-//        nextState[idx] = (randVal > 0.5f) ? Burned : Burning;
-        // TODO: Update this
-        nextState[idx] = (randVal > 0.5f) ? Burning : Burning;
+        nextState[idx] = (randVal > 0.3f) ? Burning : Burned;
     } else {
         nextState[idx] = willIgnite ? Burning : state;
     }
