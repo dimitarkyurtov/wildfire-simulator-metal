@@ -14,7 +14,7 @@ class WildfireViewModel: ObservableObject {
     let height = 256
 
     init() {
-        simulation = WildfireSimulation(device: MTLCreateSystemDefaultDevice()!)
+        simulation = WildfireSimulation(device: MTLCreateSystemDefaultDevice()!, width: width, height: height)
         cellStates = simulation.getState()
     }
 

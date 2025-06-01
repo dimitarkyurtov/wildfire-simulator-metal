@@ -2,9 +2,6 @@
 #include "MetalRand.metal"
 using namespace metal;
 
-#define WIDTH 256
-#define HEIGHT 256
-
 enum CellState {
     NotBurnable = 0,
     Burnable = 1,
@@ -15,6 +12,8 @@ enum CellState {
 struct SimulationParams {
     float baseProbability;
     int iterations;
+    int width;
+    int height;
 };
     
 kernel void setup_rng(device metalrand::XORWOWState *states [[buffer(0)]],
@@ -35,10 +34,13 @@ kernel void wildfireSimulation(
     device uint8_t* nextState [[ buffer(1) ]],
     device float2* windField [[ buffer(2) ]],
     device float* altitude [[ buffer(3) ]],
-    constant SimulationParams& params [[ buffer(4) ]],
-    device metalrand::XORWOWState *states [[buffer(5)]],
+    device metalrand::XORWOWState *states [[buffer(4)]],
+    device SimulationParams& params [[ buffer(5) ]],
     uint2 gid [[ thread_position_in_grid ]]
 ) {
+    int WIDTH = params.width;
+    int HEIGHT = params.height;
+    
     if (gid.x >= WIDTH || gid.y >= HEIGHT) return;
 
     int idx = gid.y * WIDTH + gid.x;
@@ -79,7 +81,7 @@ kernel void wildfireSimulation(
     willIgnite = (state == Burnable && ignitionProb > randVal);
 
     if (state == Burning) {
-        nextState[idx] = (randVal > 0.3f) ? Burning : Burned;
+        nextState[idx] = (randVal > 0.2f) ? Burning : Burned;
     } else {
         nextState[idx] = willIgnite ? Burning : state;
     }
