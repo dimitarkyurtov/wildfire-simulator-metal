@@ -12,6 +12,22 @@ This work presents a GPU-accelerated wildfire simulation model based on cellular
 
 The simulation operates on a 2D grid where each cell represents a segment of forest with a discrete state—burnable, burning, burned, or non-burnable. The spread of fire follows a probabilistic cellular automaton, with ignition probabilities influenced by environmental factors such as wind direction, wind magnitude, and terrain slope derived from an altitude map. These effects are modeled using simplified, physically inspired formulas that reflect natural fire behavior, including wind-driven spread and increased ignition on uphill slopes. Randomness in state transitions is achieved through a GPU-resident XORWOW random number generator initialized per cell.
 
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Author](#author)
+- [Introduction](#introduction)
+- [Background](#background)
+- [Methodology](#methodology)
+  - [1. Cellular Automata Structure](#1-cellular-automata-structure)
+  - [2. Environmental Modeling](#2-environmental-modeling)
+  - [3. Probability Computation](#3-probability-computation)
+  - [4. GPU Execution Model](#4-gpu-execution-model)
+  - [5. Platform-Specific Design Considerations](#5-platform-specific-design-considerations)
+- [Demo](#demo)
+- [Conclusion](#conclusion)
+- [References](#references)
+
 
 ## Introduction
 
