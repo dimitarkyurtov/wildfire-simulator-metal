@@ -81,15 +81,9 @@ The decision to use Apple’s Metal framework was motivated not by raw performan
 
 ## Demo
 
-<video width="600" controls>
-  <source src="videos/demo-1.mov" type="video/quicktime">
-  Your browser does not support the video tag.
-</video>
-
-<video width="600" controls>
-  <source src="videos/demo-2.mov" type="video/quicktime">
-  Your browser does not support the video tag.
-</video>
+There are 2 videos which demonstarate the example application with different visually appealing starting configurations:
+* [demo-1](videos/demo-1.mov)
+* [demo-2](videos/demo-2.mov)
 
 ## Conclusion
 
