@@ -30,7 +30,7 @@ class WildfireViewModel: ObservableObject {
     }
 
     func startSimulation() {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
             self.simulation.step()
             self.cellStates = self.simulation.getState()
         }

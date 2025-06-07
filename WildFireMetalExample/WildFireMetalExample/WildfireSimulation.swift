@@ -85,11 +85,13 @@ class WildfireSimulation {
         // The center cell becomes Burned.
         let ptr = currentState.contents().bindMemory(to: UInt8.self, capacity: width * height)
         for i in 0..<(width * height) {
-            ptr[i] = Float.random(in: 0..<1) < 0.8 ? 1 : 0
+            ptr[i] = Float.random(in: 0..<1) < 0.99 ? 1 : 0
         }
-        for i in 0..<10 {
-            ptr[i] = 2
-        }
+        ptr[width * (height/4) + width/4] = 2
+        ptr[width * (height/4) + width/4*3] = 2
+//        ptr[width * (height/2) + width/2] = 2
+        ptr[width * (height/4*3) + width/4] = 2
+        ptr[width * (height/4*3) + width/4*3] = 2
         
         // Generates the wind matrix with realistic values.
         let wind = SIMD2<Float>(x: 0.8, y: 0.2)

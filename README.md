@@ -79,6 +79,22 @@ Because each thread only reads from the current state buffer and writes to a sep
 
 The decision to use Apple’s Metal framework was motivated not by raw performance but by the goal of providing native deployment on Apple devices. This design choice aligns with the assumption that the target problem space is modest in size and can be executed efficiently on consumer-grade hardware. It allows researchers, students, or emergency planners to run interactive wildfire simulations on personal devices without specialized hardware.
 
+## Demo
+
+<video width="600" controls>
+  <source src="videos/demo-1.mov" type="video/quicktime">
+  Your browser does not support the video tag.
+</video>
+
+<video width="600" controls>
+  <source src="videos/demo-2.mov" type="video/quicktime">
+  Your browser does not support the video tag.
+</video>
+
+## Conclusion
+
+This project demonstrates that realistic wildfire spread can be simulated efficiently on consumer-grade Apple hardware using GPU acceleration with Metal. This is done by combining cellular automata with environmental factors such as wind and slope, and leveraging per-cell parallelism on the GPU.
+
 ## References
 
 1. Alexandridis, A., Vakalis, D., Siettos, C. I., & Bafas, G. (2008). *A cellular automaton model for forest fire spread prediction: The case of the wildfire that swept through Spetses Island in 1990*. Applied Mathematics and Computation, 204(1), 191–201.  
